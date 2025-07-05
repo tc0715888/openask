@@ -22,7 +22,7 @@ const content = {
 export default function Hero({ language }: HeroProps) {
   const currentContent = content[language] || content.zh;
   return (
-    <section id="home" className="pt-24 pb-20 bg-white">
+    <section id="home" className="relative pt-24 pb-20 bg-white">
       <div className="container mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
@@ -65,7 +65,7 @@ export default function Hero({ language }: HeroProps) {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: 'easeInOut' }}
-            className="max-w-xl mx-auto lg:max-w-none"
+            className="max-w-xl mx-auto lg:max-w-none z-0"
           >
             <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-2xl transform hover:scale-105 transition-transform duration-300">
               <img 

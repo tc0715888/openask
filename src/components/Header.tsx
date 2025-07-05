@@ -54,6 +54,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
   return (
     <motion.header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-lg shadow-md' : 'bg-transparent'}`}>
+
       
       <div className="container mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -155,7 +156,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="md:hidden overflow-hidden"
+              className="md:hidden overflow-hidden bg-popover/50 backdrop-blur-md"
             >
               <div className="py-4 border-t border-gray-100">
                 <nav className="flex flex-col space-y-2">
