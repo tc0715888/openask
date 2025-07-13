@@ -139,37 +139,39 @@ export default function Features({ language }: FeaturesProps) {
         </div>
 
         {/* Main Features Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 mb-20">
-          {currentContent.features.map((feature, index) => {
-            const IconComponent = feature.icon;
-            return (
-              <div key={index} className="group">
-                <div className="flex items-start space-x-4 mb-4">
-                  <div className="w-10 h-10 bg-black rounded-lg p-2.5 flex items-center justify-center group-hover:bg-gray-800 transition-colors">
-                    <IconComponent className="w-5 h-5 text-white" />
+        <div className="max-w-6xl mx-auto mb-20">
+          <div className="grid lg:grid-cols-2 gap-12">
+            {currentContent.features.map((feature, index) => {
+              const IconComponent = feature.icon;
+              return (
+                <div key={index} className="group">
+                  <div className="flex items-start space-x-4 mb-4">
+                    <div className="w-10 h-10 bg-black rounded-lg p-2.5 flex items-center justify-center group-hover:bg-gray-800 transition-colors">
+                      <IconComponent className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-semibold text-black mb-1">
+                        {feature.title}
+                      </h3>
+                      <p className="text-sm text-gray-500 font-medium">
+                        {feature.subtitle}
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-black mb-1">
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm text-gray-500 font-medium">
-                      {feature.subtitle}
-                    </p>
+                  <p className="text-gray-600 leading-relaxed mb-4 pl-14">
+                    {feature.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 pl-14">
+                    {feature.highlights.map((highlight, idx) => (
+                      <span key={idx} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-md">
+                        {highlight}
+                      </span>
+                    ))}
                   </div>
                 </div>
-                <p className="text-gray-600 leading-relaxed mb-4 pl-14">
-                  {feature.description}
-                </p>
-                <div className="flex flex-wrap gap-2 pl-14">
-                  {feature.highlights.map((highlight, idx) => (
-                    <span key={idx} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-md">
-                      {highlight}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
 
         {/* Detail Features */}

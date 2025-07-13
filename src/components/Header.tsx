@@ -161,14 +161,65 @@ export default function Header({ language, setLanguage }: HeaderProps) {
               <div className="py-4 border-t border-gray-100">
                 <nav className="flex flex-col space-y-2">
                   {navItems[language].map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="px-4 py-2 text-gray-600 hover:text-black hover:bg-gray-50 rounded-lg transition-colors duration-200"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {item.name}
-                    </a>
+                    <div key={item.name}>
+                      {item.name === 'Contact Us' || item.name === '联系我们' ? (
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <button className="w-full text-left px-4 py-2 text-gray-600 hover:text-black hover:bg-gray-50 rounded-lg transition-colors duration-200">
+                              {item.name}
+                            </button>
+                          </DialogTrigger>
+                          <DialogContent className="sm:max-w-[425px] bg-white dark:bg-gray-900 text-black dark:text-white border-gray-200 dark:border-gray-700">
+                            <DialogHeader>
+                              <DialogTitle>{item.name}</DialogTitle>
+                              <DialogDescription>
+                                {language === 'en' ? 'You can contact us through the following ways.' : '您可以通过以下方式联系我们。'}
+                              </DialogDescription>
+                            </DialogHeader>
+                            <div className="grid gap-4 py-4">
+                              <div className="grid grid-cols-4 items-center gap-4">
+                                <p className="text-right">WeChat</p>
+                                <div className="col-span-3 flex items-center justify-between">
+                                  <p>qwert181819</p>
+                                  <Button variant="ghost" size="sm" onClick={() => {
+                                    navigator.clipboard.writeText('qwert181819');
+                                    toast({
+                                      title: language === 'en' ? 'Copied' : '已复制',
+                                      description: language === 'en' ? 'WeChat ID has been copied to clipboard.' : '微信号已复制到剪贴板。',
+                                    });
+                                  }}>
+                                    <Copy className="w-4 h-4" />
+                                  </Button>
+                                </div>
+                              </div>
+                              <div className="grid grid-cols-4 items-center gap-4">
+                                <p className="text-right">Email</p>
+                                <div className="col-span-3 flex items-center justify-between">
+                                  <p>china@yyds.be</p>
+                                  <Button variant="ghost" size="sm" onClick={() => {
+                                    navigator.clipboard.writeText('china@yyds.be');
+                                    toast({
+                                      title: language === 'en' ? 'Copied' : '已复制',
+                                      description: language === 'en' ? 'Email address has been copied to clipboard.' : '邮箱地址已复制到剪贴板。',
+                                    });
+                                  }}>
+                                    <Copy className="w-4 h-4" />
+                                  </Button>
+                                </div>
+                              </div>
+                            </div>
+                          </DialogContent>
+                        </Dialog>
+                      ) : (
+                        <a
+                          href={item.href}
+                          className="px-4 py-2 text-gray-600 hover:text-black hover:bg-gray-50 rounded-lg transition-colors duration-200 block"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {item.name}
+                        </a>
+                      )}
+                    </div>
                   ))}
                   <div className="px-4 pt-2">
                     <Button onClick={() => { toggleLanguage(); setIsMenuOpen(false); }} className="w-full" variant="outline">
